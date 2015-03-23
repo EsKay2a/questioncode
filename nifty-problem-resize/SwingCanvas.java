@@ -24,8 +24,6 @@ public class SwingCanvas extends SimpleApplication implements ScreenController {
         
         // attach the nifty display to the gui view port as a processor
         guiViewPort.addProcessor(niftyDisplay); 
-   
-
 //========================= NIFTY======================================== 
 
         inputManager.setCursorVisible(true);       
@@ -58,65 +56,10 @@ public class SwingCanvas extends SimpleApplication implements ScreenController {
         nifty.gotoScreen("end");
     }
     
-    
     private void initScene(){ 
-		// some OpenGL stuff  
+	   // some OpenGL stuff  
 	}
 
-   
-        
-       int hight =180;
-       Rectangle textBox = new Rectangle(0, 0, 200, 200);
-               
-                   
-        Material matd = new Material(getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        //wichtig mit assetManager funktioniert es nicht >> Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md")
-        matd.setColor("Color", new ColorRGBA(0.3f,0.3f,0.3f,0.6f));
-        matd.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-
-        
-        Quad d= new Quad(200,200);
-        Geometry display = new Geometry("Display", d);
-        display.setMaterial(matd);
-        display.setLocalTranslation(0, hight, 0);
-
-        infoPanelNode.attachChild(display);
-          
-        hight= (int)d.getHeight();
-                
-        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
-        BitmapText textNode = new BitmapText(guiFont, true);
-        textNode.setSize(guiFont.getCharSet().getRenderedSize()-5);
-        textNode.setText("Modelrotation (L): " +modelNode.getLocalRotation());
-        infoPanelNode.attachChild(textNode);
-        hight+=textNode.getLineHeight();
-        textNode.setLocalTranslation(0, hight, 0);
-        
-        textNode.setBox(textBox);
-        textNode.setColor(ColorRGBA.White);
-
-        
-        BitmapText infoLocalRotation = new BitmapText(guiFont, false);
-        BitmapText infoCamPosition = new BitmapText(guiFont, false);
-
-        
-        infoLocalRotation.setSize(guiFont.getCharSet().getRenderedSize()-3);    // font size  
-        infoCamPosition.setSize(guiFont.getCharSet().getRenderedSize()-3);
-        
-        infoLocalRotation.setColor(ColorRGBA.Blue); 
-        
-        //infoLocalRotation.setText("Modelrotation: " +modelNode.getLocalRotation()); //modelNode.getLocalRotation()
-        infoCamPosition.setText("Kameraposition" +cam.getLocation());
-        
-        hight+=infoLocalRotation.getLineHeight();
-        infoLocalRotation.setLocalTranslation(0, hight, 0);
-        hight+= infoCamPosition.getLineHeight();
-        infoCamPosition.setLocalTranslation(0, hight, 0);
-        infoPanelNode.attachChild(infoLocalRotation);  
-        infoPanelNode.attachChild(infoCamPosition); 
-        
-    }
-   
     public JmeCanvasContext createJMEcanvas(){
         int frameRate=60;
         /** Canvas application settings */                 
@@ -145,7 +88,7 @@ public static void main(String[] args) {
              
              JPanel canvasPanel = new JPanel (new BorderLayout()); //main panel
              
-			 SwingCanvas canvasApplication = new SwingCanvas(); 
+	     SwingCanvas canvasApplication = new SwingCanvas(); 
              JmeCanvasContext ctx = (JmeCanvasContext) canvasApplication.createJMEcanvas();            
              //canvasApplication.setPauseOnLostFocus(false); //nifty
              
@@ -154,7 +97,6 @@ public static void main(String[] args) {
            
              //create optionPanel (class optionDisplay)          
              optionDisplay optionPanel = new optionDisplay();
-             
              // put all together           
              window.add(ctx.getCanvas()); //adding CanvasApp (canvasApplication) to Swing frame (window)
              canvasPanel.add(ctx.getCanvas(), BorderLayout.CENTER); // adding CanvasApp (canvasApplication) to BorderLayout position (JPanel)
@@ -167,7 +109,6 @@ public static void main(String[] args) {
              window.setVisible(true);           
 			 
              canvasApplication.startCanvas(); 
-             
          }
      });
  }
