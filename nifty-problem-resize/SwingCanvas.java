@@ -81,33 +81,23 @@ public class SwingCanvas extends SimpleApplication implements ScreenController {
      
 public static void main(String[] args) {
      java.awt.EventQueue.invokeLater(new Runnable() {    
-         //createCanvas();
-         @Override
-        
          public void run() {             
-             
              JPanel canvasPanel = new JPanel (new BorderLayout()); //main panel
-             
 	     SwingCanvas canvasApplication = new SwingCanvas(); 
              JmeCanvasContext ctx = (JmeCanvasContext) canvasApplication.createJMEcanvas();            
              //canvasApplication.setPauseOnLostFocus(false); //nifty
-             
              JFrame window = new JFrame("HuSki Editor");                    
              window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           
-             //create optionPanel (class optionDisplay)          
-             optionDisplay optionPanel = new optionDisplay();
+             optionDisplay optionPanel = new optionDisplay(); 
              // put all together           
              window.add(ctx.getCanvas()); //adding CanvasApp (canvasApplication) to Swing frame (window)
              canvasPanel.add(ctx.getCanvas(), BorderLayout.CENTER); // adding CanvasApp (canvasApplication) to BorderLayout position (JPanel)
              canvasPanel.add(optionPanel, BorderLayout.EAST); // adding optionPanel to BorderLayout position (JPanel)
-             
              window.add(canvasPanel);
              window.pack();
              window.setLocation(640/2, 480/2); // start position
              //setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
              window.setVisible(true);           
-			 
              canvasApplication.startCanvas(); 
          }
      });
