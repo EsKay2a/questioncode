@@ -96,11 +96,9 @@ public static void main(String[] args) {
              window.add(canvasPanel);
              window.pack();
              window.setLocation(640/2, 480/2); // start position
-             //setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
              window.setVisible(true);           
              canvasApplication.startCanvas(); 
-         }
-     });
+         }     });
  }
 
     @Override
